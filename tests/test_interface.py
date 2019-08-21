@@ -14,9 +14,9 @@ class TestInterface(unittest.TestCase):
         mock_input.assert_called_with(GUESSING_TEMPLATE.format(first_number=first_number,
                                       second_number=second_number, operator=operator))
 
-    def test_get_exception_when_type_invalid_number_to_guessing(self):
-        with patch('builtins.input', return_value='a'):
-            self.assertRaises(ValueError, display_question_and_return_number_from_user, '10', '10', '+')
+    @patch('builtins.input', return_value='a')
+    def test_get_exception_when_type_invalid_number_to_guessing(self, mock_input):
+        self.assertRaises(ValueError, display_question_and_return_number_from_user, '10', '10', '+')
 
 
 if __name__ == '__main__':
