@@ -1,5 +1,5 @@
 from random import randrange
-from mentalmath.interface import display_question_and_return_number_from_user
+from mentalmath.interface import guessing
 
 
 def random_two_of_one_digit_number_for_addition():
@@ -10,19 +10,7 @@ def random_two_of_one_digit_number_for_addition():
 
 
 def main():
-    while True:
-        first_number, second_number, summed = random_two_of_one_digit_number_for_addition()
-        while True:
-            guess = display_question_and_return_number_from_user(first_number, second_number, '+')
-            if guess != summed:
-                print('No!!!!!')
-                continue
-            break
-        again = input('Nice!!!, Play again? ([y]/n): ')
-        if len(again) == 0 or again.upper()[0] == 'Y':
-            continue
-        break
-    print('Bye')
+    guessing(random_two_of_one_digit_number_for_addition, '+')
 
 
 if __name__ == '__main__':

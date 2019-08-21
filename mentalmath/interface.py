@@ -11,3 +11,19 @@ def display_question_and_return_number_from_user(first_number, second_number, op
             print('Please type a valid number !!!')
             continue
     raise ValueError('Please type a valid number !!!')
+
+
+def guessing(question_generator, operator):
+    while True:
+        first_number, second_number, result = question_generator()
+        while True:
+            guess = display_question_and_return_number_from_user(first_number, second_number, operator)
+            if guess != result:
+                print('No!!!!!')
+                continue
+            break
+        again = input('Nice!!!, Play again? ([y]/n): ')
+        if len(again) == 0 or again.upper()[0] == 'Y':
+            continue
+        break
+    print('Bye')
